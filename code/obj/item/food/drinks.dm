@@ -310,7 +310,7 @@
 
 /obj/item/reagent_containers/food/drinks/covfefe
 	name = "Discount Dan's Covfefe"
-	desc = "Some kind of ersatz coffee that can't legally be named coffee. Actually, it's mostly water and whatever ingredients they could get cheap that day."
+	desc = "Some kind of ersatz drink that can't legally be named coffee. Actually, it's mostly water and whatever they could get cheap that day."
 	icon_state = "tea0"
 	item_state = "coffee"
 	heal_amt = 1
@@ -318,8 +318,8 @@
 
 	New()
 		..()
-		reagents.add_reagent("potato", 5)
 		reagents.add_reagent("water", 25)
 		reagents.add_reagent("VHFCS", 10)
-		reagents.add_reagent("wheat", 5)
-		reagents.add_reagent(pick("beff","sugar","eggnog","chocolate","vanilla","cleaner","luminol","poo","urine","nicotine","weedkiller","venom","jenkem","ethanol","ectoplasm"), 5)
+		reagents.add_reagent(pick("beff","ketchup","eggnog","yuck","chocolate","vanilla","cleaner","capsaicin","toxic_slurry","luminol","urine","nicotine","weedkiller","venom","jenkem","ectoplasm"), 5)
+		reagents.add_reagent(pick("beff","ketchup","eggnog","yuck","chocolate","vanilla","cleaner","capsaicin","toxic_slurry","luminol","urine","nicotine","weedkiller","venom","jenkem","ectoplasm"), 5)
+		reagents.add_reagent(pick("beff","ketchup","eggnog","yuck","chocolate","vanilla","cleaner","capsaicin","toxic_slurry","luminol","urine","nicotine","weedkiller","venom","jenkem","ectoplasm"), 5)
