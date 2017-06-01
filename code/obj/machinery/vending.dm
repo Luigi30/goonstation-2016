@@ -129,8 +129,8 @@
 		product_list += new/datum/data/vending_product("/obj/item/reagent_containers/food/drinks/bottle/xmas", 10, cost=1)
 		product_list += new/datum/data/vending_product("/obj/item/reagent_containers/food/drinks/chickensoup", 10, cost=3)
 		product_list += new/datum/data/vending_product("/obj/item/reagent_containers/food/drinks/weightloss_shake", 10, cost=5)
-		product_list += new/datum/data/vending_product("/obj/item/reagent_containers/food/drinks/covfefe", 10, cost=1) 
 
+		product_list += new/datum/data/vending_product("/obj/item/reagent_containers/food/drinks/covfefe", 10, cost=1, hidden=1)
 		product_list += new/datum/data/vending_product("/obj/item/reagent_containers/food/drinks/cola", rand(1, 6), hidden=1)
 
 /obj/machinery/vending/snack

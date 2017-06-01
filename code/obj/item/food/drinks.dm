@@ -309,7 +309,7 @@
 	
 /obj/item/reagent_containers/food/drinks/covfefe
 	name = "Discount Dan's Covfefe"
-	desc = "Some kind of ersatz drink that can't legally be called coffee. Actually, it's mostly water and whatever they could get cheap that day."
+	desc = "Some kind of ersatz drink that can't legally be called coffee. Actually, it's mostly water and whatever they could get cheap that day. Wait, wasn't this banned by the FDA?"
 	icon_state = "coffee"
 	heal_amt = 1
 	initial_volume = 50
@@ -317,7 +317,8 @@
 	New()
 		..()
 		reagents.add_reagent("water", 25)
-		reagents.add_reagent("VHFCS", 10)
+		reagents.add_reagent("VHFCS", 5)
+		reagents.add_reagent(pick("methamphetamine", "crank", "space_drugs", "cat_drugs", "coffee"), 5)
 		reagents.add_reagent(pick("beff","ketchup","eggnog","yuck","chocolate","vanilla","cleaner","capsaicin","toxic_slurry","luminol","urine","nicotine","weedkiller","venom","jenkem","ectoplasm"), 5)
 		reagents.add_reagent(pick("beff","ketchup","eggnog","yuck","chocolate","vanilla","cleaner","capsaicin","toxic_slurry","luminol","urine","nicotine","weedkiller","venom","jenkem","ectoplasm"), 5)
 		reagents.add_reagent(pick("beff","ketchup","eggnog","yuck","chocolate","vanilla","cleaner","capsaicin","toxic_slurry","luminol","urine","nicotine","weedkiller","venom","jenkem","ectoplasm"), 5)
