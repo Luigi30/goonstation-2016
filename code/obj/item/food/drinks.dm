@@ -313,6 +313,7 @@
 	desc = "Some kind of ersatz coffee that can't legally be named coffee. Actually, it's mostly water."
 	icon_state = "tea0"
 	item_state = "coffee"
+	heal_amt = 1
 	initial_volume = 50
 
 	New()
