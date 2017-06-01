@@ -306,3 +306,18 @@
 /obj/item/reagent_containers/food/drinks/milk/soy
 	name = "Creaca's Space Soy Milk"
 	desc = "A bottle of fresh space soy milk from happy, free-roaming space soybean plants. The plant pots just float around untethered."
+
+
+/obj/item/reagent_containers/food/drinks/covfefe
+	name = "Discount Dan's Covfefe"
+	desc = "Some kind of ersatz coffee that can't legally be named coffee. Actually, it's mostly water."
+	icon_state = "tea0"
+	item_state = "coffee"
+	initial_volume = 50
+
+	New()
+		..()
+		reagents.add_reagent("potato", 5)
+		reagents.add_reagent("water", 30)
+		reagents.add_reagent("VHFCS", 10)
+		reagents.add_reagent("wheat", 5)
