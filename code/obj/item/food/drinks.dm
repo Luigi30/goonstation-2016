@@ -306,9 +306,9 @@
 /obj/item/reagent_containers/food/drinks/milk/soy
 	name = "Creaca's Space Soy Milk"
 	desc = "A bottle of fresh space soy milk from happy, free-roaming space soybean plants. The plant pots just float around untethered."
-	
+
 /obj/item/reagent_containers/food/drinks/covfefe
-	name = "Discount Dan's Covfefe"
+	name = "Wired Dan's Kafe Kick!"
 	desc = "Some kind of ersatz drink that can't legally be called coffee. Actually, it's mostly water and whatever they could get cheap that day. Wait, wasn't this banned by the FDA?"
 	icon_state = "coffee"
 	heal_amt = 1
