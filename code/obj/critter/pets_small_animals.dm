@@ -31,9 +31,13 @@
 			src.visible_message("<span class='combat'><b>[user]</b> pets [src]!</span>")
 			return
 		if(prob(95))
-			src.visible_message("<span class='combat'><B>[user] stomps [src], killing it instantly!</B></span>")
-			CritterDeath()
-			return
+			if(src.alive)
+				src.visible_message("<span class='combat'><B>[user] stomps [src], killing it instantly!</B></span>")
+				CritterDeath()
+				return
+			else
+				src.visible_message("<span class='combat'><B>[user] squishes [src] a little more for good measure.</B></span>")
+				return
 		..()
 
 /obj/critter/mouse/remy
@@ -582,9 +586,13 @@ var/list/cat_names = list("Gary", "Mittens", "Mr. Jingles", "Rex", "Jasmine", "L
 			src.visible_message("<span class='combat'><b>[user]</b> [src.pet_text] [src]!</span>")
 			return
 		if(prob(50))
-			src.visible_message("<span class='combat'><B>[user] stomps [src], killing it instantly!</B></span>")
-			CritterDeath()
-			return
+			if(src.alive)
+				src.visible_message("<span class='combat'><B>[user] stomps [src], killing it instantly!</B></span>")
+				CritterDeath()
+				return
+			else
+				src.visible_message("<span class='combat'><B>[user] squishes [src] a little more for good measure.</B></span>")
+				return
 		..()
 
 	CritterAttack(mob/M)
