@@ -1922,17 +1922,15 @@
 					if (sims)
 						var/bladder = sims.getValue("bladder")
 						var/obj/item/storage/toilet/toilet = locate() in src.loc
+						var/obj/item/reagent_containers/glass/beaker = locate() in src.loc
+						boutput(src, "toilet: [toilet ? "yes" : "no"]; beaker: [beaker ? "yes" : "no"]")
+
+
 						if (bladder > 75)
 							boutput(src, "<span style=\"color:blue\">You don't need to go right now.</span>")
 							return
 						else if (bladder > 50)
-							if (!toilet)
-								if (wear_suit || w_uniform)
-									boutput(src, "<span style=\"color:red\">You don't feel desperate enough to piss into your [w_uniform ? "uniform" : "suit"].</span>")
-								else
-									boutput(src, "<span style=\"color:red\">You don't feel desperate enough to piss on the floor.</span>")
-								return
-							else
+							if(toilet)
 								if (wear_suit || w_uniform)
 									message = "<B>[src]</B> unzips their pants and pees in the toilet."
 								else
@@ -1940,11 +1938,15 @@
 								toilet.clogged += 0.10
 								sims.affectMotive("bladder", 100)
 								sims.affectMotive("hygiene", -5)
-						else if (bladder > 25)
-							if ((wear_suit || w_uniform) && !toilet)
+							else if(beaker)
+								boutput(src, "<span style=\"color:red\">You don't feel desperate enough to piss in the beaker.</span>")
+							else if(wear_suit || w_uniform)
 								boutput(src, "<span style=\"color:red\">You don't feel desperate enough to piss into your [w_uniform ? "uniform" : "suit"].</span>")
-								return
-							else if (toilet)
+							else
+								boutput(src, "<span style=\"color:red\">You don't feel desperate enough to piss on the floor.</span>")
+							return
+						else if (bladder > 25)
+							if(toilet)
 								if (wear_suit || w_uniform)
 									message = "<B>[src]</B> unzips their pants and pees in the toilet."
 								else
@@ -1952,11 +1954,23 @@
 								toilet.clogged += 0.10
 								sims.affectMotive("bladder", 100)
 								sims.affectMotive("hygiene", -5)
-							else
-								message = "<B>[src]</B> pisses all over the floor!"
-								src.urinate()
+							else if(beaker)
+								if(wear_suit || w_uniform)
+									message = "<B>[src]</B> unzips their pants, takes aim, and pees in the beaker."
+								else
+									message = "<B>[src]</B> takes aim and pees in the beaker."
+								beaker.reagents.add_reagent("urine", 5)
 								sims.affectMotive("bladder", 100)
-								sims.affectMotive("hygiene", -50)
+								sims.affectMotive("hygiene", -25)
+							else
+								if(wear_suit || w_uniform)
+									boutput(src, "<span style=\"color:red\">You don't feel desperate enough to piss into your [w_uniform ? "uniform" : "suit"].</span>")
+									return
+								else
+									message = "<B>[src]</B> pisses all over the floor!"
+									src.urinate()
+									sims.affectMotive("bladder", 100)
+									sims.affectMotive("hygiene", -50)
 						else
 							if (toilet)
 								if (wear_suit || w_uniform)
@@ -1966,6 +1980,14 @@
 								toilet.clogged += 0.10
 								sims.affectMotive("bladder", 100)
 								sims.affectMotive("hygiene", -5)
+							else if(beaker)
+								if(wear_suit || w_uniform)
+									message = "<B>[src]</B> unzips their pants, takes aim, and fills the beaker with pee."
+								else
+									message = "<B>[src]</B> takes aim and fills the beaker with pee."
+								sims.affectMotive("bladder", 100)
+								sims.affectMotive("hygiene", -25)
+								beaker.reagents.add_reagent("urine", 10)
 							else
 								if (wear_suit || w_uniform)
 									message = "<B>[src]</B> pisses all over themselves!"
@@ -1980,26 +2002,35 @@
 									src.urinate()
 									sims.affectMotive("bladder", 100)
 									sims.affectMotive("hygiene", -50)
-					else if (src.urine < 1)
-						message = "<B>[src]</B> pees themselves a little bit."
-					else if ((locate(/obj/item/storage/toilet) in src.loc) && (src.buckled != null) && (src.urine >= 2))
-						for (var/obj/item/storage/toilet/T in src.loc)
-							message = pick("<B>[src]</B> unzips their pants and pees in the toilet.", "<B>[src]</B> empties their bladder.", "<span style=\"color:blue\">Ahhh, sweet relief.</span>")
-							src.urine = 0
-							T.clogged += 0.10
-							break
 					else
-						message = pick("<B>[src]</B> unzips their pants and pees on the floor.", "<B>[src]</B> pisses all over the floor!", "<B>[src]</B> makes a big piss puddle on the floor.")
-						src.urine--
-						src.urinate()
-					for(var/mob/living/carbon/human/M in viewers(src, null))
-						if(!M.stat && M.get_brain_damage() >= 60)
-							spawn(10)
-								if(prob(20))
-									switch(pick(1,2,3))
-										if(1) M.say("[M == src ? "i" : src.name] made pee pee, heeheeheeeeeeee!")
-										if(2) M.emote("giggle")
-										if(3) M.emote("clap")
+						var/obj/item/storage/toilet/toilet = locate() in src.loc
+						var/obj/item/reagent_containers/glass/beaker = locate() in src.loc
+
+						if (src.urine < 1)
+							message = "<B>[src]</B> pees themselves a little bit."
+						else if (toilet && (src.buckled != null) && (src.urine >= 2))
+							for (var/obj/item/storage/toilet/T in src.loc)
+								message = pick("<B>[src]</B> unzips their pants and pees in the toilet.", "<B>[src]</B> empties their bladder.", "<span style=\"color:blue\">Ahhh, sweet relief.</span>")
+								src.urine = 0
+								T.clogged += 0.10
+								break
+						else if (beaker && (src.urine >= 1))
+							message = pick("<B>[src]</B> unzips their pants, takes aim, and pees in the beaker.", "<B>[src]</B> takes aim and pees in the beaker!", "<B>[src]</B> fills the beaker with pee!")
+							beaker.reagents.add_reagent("urine", src.urine * 4)
+							src.urine = 0
+						else
+							message = pick("<B>[src]</B> unzips their pants and pees on the floor.", "<B>[src]</B> pisses all over the floor!", "<B>[src]</B> makes a big piss puddle on the floor.")
+							src.urine--
+							src.urinate()
+
+						for(var/mob/living/carbon/human/M in viewers(src, null))
+							if(!M.stat && M.get_brain_damage() >= 60)
+								spawn(10)
+									if(prob(20))
+										switch(pick(1,2,3))
+											if(1) M.say("[M == src ? "i" : src.name] made pee pee, heeheeheeeeeeee!")
+											if(2) M.emote("giggle")
+											if(3) M.emote("clap")
 
 			if ("poo", "poop", "shit", "crap")
 				if (src.emote_check(voluntary))
