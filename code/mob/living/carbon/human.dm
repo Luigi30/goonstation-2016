@@ -1783,6 +1783,9 @@
 						message = "<B>[src]</B> makes a very loud noise."
 						m_type = 2
 
+					if (src.traitHolder && src.traitHolder.hasTrait("scaredshitless"))
+						src.emote("fart") //We can still fart if we're muzzled.
+
 			if ("burp")
 				if (src.emote_check(voluntary))
 					if ((src.charges >= 1) && (!muzzled))

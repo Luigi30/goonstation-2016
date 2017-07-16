@@ -544,6 +544,24 @@
 	id = "leftfeet"
 	points = 1
 	isPositive = 0
+
+/obj/trait/pawnstar
+	name = "Petasusaphilic (-1) \[Trinkets\]"
+	cleanName = "Pawn Star"
+	desc = "You sold your trinket before you departed for the station. You start with a bonus of 25% of your starting cash in your inventory."
+	id = "pawnstar"
+	points = -1
+	isPositive = 1
+	category = "trinkets"
+
+/obj/trait/scaredshitless
+	name = "Scared Shitless (0)"
+	cleanName = "Scared Shitless"
+	desc = "Literally. When you scream, you fart. Be careful around Bibles!"
+	id = "scaredshitless"
+	points = 0
+	isPositive = 0
+
 /*
 /obj/trait/lizard
 	name = "Lizard (-1) \[Race\]"
@@ -723,7 +741,6 @@
 
 			spawn(40) owner.add_memory(str) //FUCK THIS SPAWN FUCK FUUUCK
 		return
-
 
 //RANDOM SNIPPETS AND RUBBISH BELOW
 

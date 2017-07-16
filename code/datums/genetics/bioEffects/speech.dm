@@ -343,3 +343,52 @@
 			return ""
 		message = zalgoify(message, 8, 2, 8)
 		return message
+
+/datum/bioEffect/speech/butt
+	name = "Frontal Gyrus Alteration Type-BT"
+	desc = "Causes the language center of the brain to be connected to the subject's butt."
+	id = "accent_butt"
+	msgGain = "Your breath smells like a fart."
+	msgLose = "Your breath no longer smells like a fart."
+	reclaim_fail = 10
+	stability_loss = -10
+	lockProb = 75
+	lockedGaps = 4
+	lockedDiff = 2
+	lockedChars = list("G","C")
+	lockedTries = 3
+	OnSpeak(var/message)
+		if (!istext(message))
+			return ""
+
+		var/list/speech_list = splittext(message, " ")
+		if(!speech_list || !speech_list.len)
+			return ""
+
+		var/num_butts = rand(1,4)
+		var/counter = 0
+		while(num_butts)
+			counter++
+			num_butts--
+			speech_list[rand(1,speech_list.len)] = "butt"
+			if(counter >= (speech_list.len / 2) )
+				num_butts = 0
+
+		return jointext(speech_list, " ")
+
+		/*
+		var/list/speech_list = splittext(messages[m_id], " ")
+		if(!speech_list || !speech_list.len)
+			return
+
+		var/num_butts = rand(1,4)
+		var/counter = 0
+		while(num_butts)
+			counter++
+			num_butts--
+			speech_list[rand(1,speech_list.len)] = "butt"
+			if(counter >= (speech_list.len / 2) )
+				num_butts = 0
+
+		src.speak( jointext(speech_list, " ") )
+		*/

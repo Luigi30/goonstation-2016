@@ -344,7 +344,9 @@
 	var/T = pick(trinket_safelist)
 	var/obj/item/trinket = null
 
-	if (src.traitHolder && src.traitHolder.hasTrait("loyalist"))
+	if (src.traitHolder && src.traitHolder.hasTrait("pawnstar"))
+		trinket = null
+	else if (src.traitHolder && src.traitHolder.hasTrait("loyalist"))
 		trinket = new/obj/item/clothing/head/NTberet(src)
 	else if (src.traitHolder && src.traitHolder.hasTrait("petasusaphilic"))
 		var/picked = pick(typesof(/obj/item/clothing/head) - list(/obj/item/clothing/head, /obj/item/clothing/head/power, /obj/item/clothing/head/fancy, /obj/item/clothing/head/monkey, /obj/item/clothing/head/monkey/paper_hat) ) //IM A MONSTER DONT LOOK AT ME. NOOOOOOOOOOO
@@ -445,7 +447,10 @@
 		src.mind.store_memory("Your pin to your ID is: [C.pin]")
 
 	if (wagesystem.jobs[JOB.name])
-		src.equip_if_possible(new /obj/item/spacecash(src,wagesystem.jobs[JOB.name]), slot_r_store)
+		var cashModifier = 1.0
+		if (src.traitHolder && src.traitHolder.hasTrait("pawnstar"))
+			cashModifier = 1.25
+		src.equip_if_possible(new /obj/item/spacecash(src,wagesystem.jobs[JOB.name] * cashModifier), slot_r_store)
 	else
 		var/shitstore = rand(1,3)
 		switch(shitstore)
