@@ -351,6 +351,9 @@
 	else if (src.traitHolder && src.traitHolder.hasTrait("petasusaphilic"))
 		var/picked = pick(typesof(/obj/item/clothing/head) - list(/obj/item/clothing/head, /obj/item/clothing/head/power, /obj/item/clothing/head/fancy, /obj/item/clothing/head/monkey, /obj/item/clothing/head/monkey/paper_hat) ) //IM A MONSTER DONT LOOK AT ME. NOOOOOOOOOOO
 		trinket = new picked(src)
+	else if (src.traitHolder && src.traitHolder.hasTrait("smoker"))
+		var/picked = new/obj/item/zippo
+		trinket = new picked(src)
 	else
 		trinket = new T(src)
 

@@ -54,6 +54,9 @@
 		if (src.change_name_on_spawn)
 			spawn(0)
 				M.choose_name(3, src.name, M.real_name + " the " + src.name)
+		if (M.traitHolder && !M.traitHolder.hasTrait("loyalist"))
+			cant_spawn_as_rev = 1 //Why would an NT Loyalist be a revolutionary?
+
 
 // Command Jobs
 
@@ -332,7 +335,6 @@
 	slot_head = /obj/item/clothing/head/det_hat
 	slot_glov = /obj/item/clothing/gloves/black
 	slot_suit = /obj/item/clothing/suit/det_suit
-	slot_poc1 = /obj/item/zippo
 	slot_ears = /obj/item/device/radio/headset/security
 	items_in_backpack = list(/obj/item/tank/emergency_oxygen,/obj/item/clothing/glasses/vr)
 
@@ -346,6 +348,9 @@
 		if (!M)
 			return
 		M.bioHolder.AddEffect("resist_alcohol")
+
+		if (M.traitHolder && !M.traitHolder.hasTrait("smoker"))
+			slot_poc1 = /obj/item/zippo //Smokers start with a trinket version
 
 // Research Jobs
 
@@ -1245,6 +1250,8 @@
 			bee.beeMomCkey = M.ckey
 			bee.name = pick_string("bee_names.txt", "beename")
 			bee.name = replacetext(bee.name, "larva", "bee")
+
+		M.bioHolder.AddEffect("bee")
 
 /datum/job/special/random/souschef
 	name = "Sous-Chef"
