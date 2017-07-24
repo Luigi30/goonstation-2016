@@ -108,6 +108,49 @@
 		else
 			return pick("gurgles.","shivers.","twitches.","shakes.","squirms.", "cries.")
 
+	emote(var/act)
+		. = null
+		switch(act)
+			if("dance")
+				src.visible_message("<B>[src]</B> twitches to some kind of rhythm. At least, you think so. Those things are always twitching.")
+			if("fart")
+				var/fart_on_other = 0
+				for (var/mob/living/M in src.loc)
+					if (M == src || !M.lying) continue
+					src.visible_message("<span style=\"color:red\"><B>[src]</B> jumps and farts all over [M]! That's disgusting!</span>")
+					fart_on_other = 1
+					if(prob(20))
+						sleep(1)
+						src.visible_message("<span style=\"color:red\">[M] vomits!</span>")
+						playsound(M.loc, "sound/effects/splat.ogg", 50, 1)
+						new /obj/decal/cleanable/vomit(M.loc)
+					break
+				if(!fart_on_other)
+					switch (rand(1, 10))
+						if (1) src.visible_message("<B>[src]</B> releases some kind of gas into the air.")
+						if (2) src.visible_message("<B>[src]</B> farts! How can meat cubes do that?")
+						if (3) src.visible_message("<B>[src]</B> shoots out a cloud of death.")
+						if (4) src.visible_message("<B>[src]</B> squeezes itself inward and farts.")
+						if (5) src.visible_message("<B>[src]</B> hops up and down, farting all the while.")
+						if (6) src.visible_message("<B>[src]</B> fart in it own mouth. A shameful [src].")
+						if (7) src.visible_message("<B>[src]</B> gets revenge on humanity with a terrible fart.")
+						if (8) src.visible_message("<B>[src]</B> stinks even worse than normal, somehow.")
+						if (9) src.visible_message("<B>[src]</B> shows that it can fart just as good as any human.")
+						if (10)
+							src.visible_message("<B>[src]</B> farts blood and guts out of one of its sides! That's absolutely disgusting!")
+							var/obj/decal/cleanable/blood/gibs/gib = null
+							gib = new /obj/decal/cleanable/blood/gibs(src.loc)
+							gib.streak(alldirs)
+				playsound(src.loc, 'sound/vox/fart.ogg', 50, 1)
+			if ("flex","flexmuscles")
+				src.visible_message("<B>[src]</B>'s center compresses slightly more than the rest of its jiggling mass. Are those... muscles?")
+			if ("flip")
+				src.visible_message("<B>[src]</b> squishes down, pops up, and does a flip! Gross!")
+				animate_spin(src, "R", 1, 0)
+			if ("smile","grin","smirk","frown","scowl","grimace","sulk","pout","blink","nod","shrug","think","ponder","contemplate")
+				// basic visible single-word emotes
+				src.visible_message("<B>[src]</B> jiggles like only a meat cube can.")
+
 	verb/suicide()
 		set hidden = 1
 
