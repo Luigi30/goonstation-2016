@@ -1526,6 +1526,16 @@ datum
 			required_reagents = list("oxygen" = 1, "chlorine" = 1, "hydrogen" = 1, "silicon" = 1)
 			result_amount = 3
 
+		honk_fart
+			name = "Honkfartium"
+			id = "honk_fart"
+			result = "honk_fart"
+			required_reagents = list("anti_fart" = 1, "fartonium" = 1)
+			required_temperature = T0C + 100
+			result_amount = 1
+			mix_sound = 'sound/misc/drinkfizz.ogg'
+			mix_phrase = "The chemicals hiss and fizz briefly, followed by one big bubble that smells like a fart."
+
 		flash_powder
 			name = "Flash Powder"
 			id = "flashpowder"
