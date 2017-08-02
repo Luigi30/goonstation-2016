@@ -141,7 +141,7 @@
 							var/obj/decal/cleanable/blood/gibs/gib = null
 							gib = new /obj/decal/cleanable/blood/gibs(src.loc)
 							gib.streak(alldirs)
-				playsound(src.loc, 'sound/vox/fart.ogg', 50, 1)
+				playsound(src.loc, 'sound/misc/poo2.ogg', 50, 1)
 			if ("flex","flexmuscles")
 				src.visible_message("<B>[src]</B>'s center compresses slightly more than the rest of its jiggling mass. Are those... muscles?")
 			if ("flip")

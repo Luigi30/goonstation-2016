@@ -1893,6 +1893,8 @@
 							playsound(src.loc, 'sound/misc/Poo.ogg', 50, 1)
 						else if (src.organHolder && src.organHolder.butt && istype(src.organHolder.butt, /obj/item/clothing/head/butt/cyberbutt))
 							playsound(src.loc, 'sound/misc/poo2_robot.ogg', 100, 1, 0, src.get_age_pitch())
+						else if (src.reagents.has_reagent("honk_fart"))
+							playsound(src.loc, 'sound/items/bikehorn.ogg', 50, 1, -1)
 						else
 							if (narrator_mode)
 								playsound(src.loc, 'sound/vox/fart.ogg', 100, 0, 0, src.get_age_pitch())

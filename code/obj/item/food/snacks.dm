@@ -597,7 +597,7 @@
 		if(src.warm && M.reagents)
 			M.reagents.add_reagent("omnizine",15)
 		else
-			boutput(M, "<span style=\"color:red\">It's just not good enough cold..</span>")
+			boutput(M, "<span style=\"color:red\">It's just not good enough cold...</span>")
 		..()
 
 	temperature_expose(datum/gas_mixture/air, exposed_temperature, exposed_volume)
@@ -613,6 +613,42 @@
 			spawn( 4200 )
 				src.warm = 0
 				src.name = "donk-pocket"
+		return
+
+	attackby(obj/item/W as obj, mob/user as mob)
+		if (istype(W, /obj/item/reagent_containers/food/snacks/condiment/)) src.amount += 1
+
+/obj/item/reagent_containers/food/snacks/honkpocket
+	name = "honk-pocket"
+	desc = "The food of choice for the seasoned t-- wait, what?"
+	icon_state = "donkpocket"
+	heal_amt = 1
+	amount = 1
+	doants = 0
+	var/warm = 0
+
+	warm
+		name = "warm honk-pocket"
+		warm = 1
+
+		New()
+			..()
+			src.cooltime()
+			return
+
+	heal(var/mob/M)
+		if(src.warm && M.reagents)
+			M.reagents.add_reagent("honk_fart",15)
+		else
+			boutput(M, "<span style=\"color:red\">It's just not good enough cold...</span>")
+			M.reagents.add_reagent("simethicone",15)
+		..()
+
+	proc/cooltime()
+		if (src.warm)
+			spawn( 4200 )
+				src.warm = 0
+				src.name = "honk-pocket"
 		return
 
 	attackby(obj/item/W as obj, mob/user as mob)
