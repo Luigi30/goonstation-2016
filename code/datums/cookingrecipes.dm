@@ -117,6 +117,13 @@
 	cookbonus = 10
 	output = /obj/item/reagent_containers/food/snacks/donkpocket/warm
 
+/datum/cookingrecipe/honkpocket
+	item1 = /obj/item/reagent_containers/food/snacks/ingredient/dough
+	item2 = /obj/item/reagent_containers/food/snacks/meatball
+	item3 = /obj/item/bikehorn
+	cookbonus = 10
+	output = /obj/item/reagent_containers/food/snacks/honkpocket/warm
+
 /datum/cookingrecipe/donkpocket2
 	item1 = /obj/item/reagent_containers/food/snacks/donkpocket
 	cookbonus = 10
