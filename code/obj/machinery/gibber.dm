@@ -109,6 +109,7 @@
 			sourcejob = src.occupant.ghost.mind.assigned_role
 		else
 			sourcejob = "Stowaway"
+		var/sourceIsCluwne = iscluwne(src.occupant)
 
 		var/decomp = 0
 		if(ishuman(src.occupant))
@@ -206,18 +207,43 @@
 							B1.blood_DNA = bdna
 							B1.blood_type = btype
 			return
-		var/obj/item/reagent_containers/food/snacks/ingredient/meat/humanmeat/newmeat1 = new /obj/item/reagent_containers/food/snacks/ingredient/meat/humanmeat/
-		var/obj/item/reagent_containers/food/snacks/ingredient/meat/humanmeat/newmeat2 = new /obj/item/reagent_containers/food/snacks/ingredient/meat/humanmeat/
-		var/obj/item/reagent_containers/food/snacks/ingredient/meat/humanmeat/newmeat3 = new /obj/item/reagent_containers/food/snacks/ingredient/meat/humanmeat/
-		newmeat1.name = sourcename + newmeat1.name
+
+		var/obj/item/reagent_containers/food/snacks/ingredient/meat/humanmeat/newmeat1 = null
+		var/obj/item/reagent_containers/food/snacks/ingredient/meat/humanmeat/newmeat2 = null
+		var/obj/item/reagent_containers/food/snacks/ingredient/meat/humanmeat/newmeat3 = null
+
+		if(sourcejob == "Clown")
+		{
+			newmeat1 = new /obj/item/reagent_containers/food/snacks/ingredient/meat/humanmeat/clownmeat
+			newmeat2 = new /obj/item/reagent_containers/food/snacks/ingredient/meat/humanmeat/clownmeat
+			newmeat3 = new /obj/item/reagent_containers/food/snacks/ingredient/meat/humanmeat/clownmeat
+		}
+		else if(sourceIsCluwne)
+		{
+			newmeat1 = new /obj/item/reagent_containers/food/snacks/ingredient/meat/humanmeat/cluwnemeat
+			newmeat2 = new /obj/item/reagent_containers/food/snacks/ingredient/meat/humanmeat/cluwnemeat
+			newmeat3 = new /obj/item/reagent_containers/food/snacks/ingredient/meat/humanmeat/cluwnemeat
+		}
+		else
+		{
+			newmeat1 = new /obj/item/reagent_containers/food/snacks/ingredient/meat/humanmeat/
+			newmeat2 = new /obj/item/reagent_containers/food/snacks/ingredient/meat/humanmeat/
+			newmeat3 = new /obj/item/reagent_containers/food/snacks/ingredient/meat/humanmeat/
+
+			newmeat1.name = sourcename + newmeat1.name
+			newmeat2.name = sourcename + newmeat2.name
+			newmeat3.name = sourcename + newmeat3.name
+		}
+
 		newmeat1.subjectname = sourcename
 		newmeat1.subjectjob = sourcejob
-		newmeat2.name = sourcename + newmeat2.name
+
 		newmeat2.subjectname = sourcename
 		newmeat2.subjectjob = sourcejob
-		newmeat3.name = sourcename + newmeat3.name
+
 		newmeat3.subjectname = sourcename
 		newmeat3.subjectjob = sourcejob
+
 		spawn(src.gibtime)
 			playsound(src.loc, "sound/effects/splat.ogg", 50, 1)
 			operating = 0

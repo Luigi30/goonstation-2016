@@ -47,6 +47,9 @@
 	stability_loss = 10
 	var/image/overlay_image_two = null
 
+	msgGain = "You feel neither warm nor cold."
+	msgLose = "You feel warm, cold, or... whatever's appropriate for the room."
+
 	OnAdd()
 		if (ishuman(owner))
 			overlay_image = image("icon" = 'icons/effects/genetics.dmi', "icon_state" = "aurapulse", layer = MOB_LIMB_LAYER)
@@ -251,6 +254,9 @@
 	lockedTries = 6
 	stability_loss = 5
 
+	msgGain = "You feel blurry and out-of-focus."
+	msgLose = "You feel sharp again."
+
 /datum/bioEffect/dead_scan
 	name = "Pseudonecrosis"
 	desc = "Causes the subject's cells to mimic a death-like state."
@@ -258,6 +264,9 @@
 	effectType = effectTypePower
 	probability = 99
 	stability_loss = 5
+
+	msgGain = "You feel dead!"
+	msgLose = "Alive! You feel alive!"
 
 ///////////////////
 // General buffs //

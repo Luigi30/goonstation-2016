@@ -34,6 +34,26 @@
 	var/subjectjob = null
 	amount = 1
 
+/obj/item/reagent_containers/food/snacks/ingredient/meat/humanmeat/clownmeat
+	name = "-meat"
+	desc = "A slab of meat that looks kinda funny."
+	amount = 1
+
+	heal(var/mob/living/M)
+		if (prob(33))
+			boutput(M, "<span style=\"color:red\">You feel kinda funny after eating that raw meat...</span>")
+			M.contract_disease(/datum/ailment/disease/clowning_around, null, null, 1) // path, name, strain, bypass resist
+
+/obj/item/reagent_containers/food/snacks/ingredient/meat/humanmeat/cluwnemeat
+	name = "cluwne meat"
+	desc = "A slab of meat with strange green marbling."
+	amount = 1
+
+	heal(var/mob/living/M)
+		if (prob(33))
+			boutput(M, "<span style=\"color:red\">Terrifying images of a green being trapped in a world of honking overtake you for a moment. Probably nothing.</span>")
+			M.contract_disease(/datum/ailment/disease/cluwneing_around, null, null, 1) // path, name, strain, bypass resist
+
 /obj/item/reagent_containers/food/snacks/ingredient/meat/monkeymeat
 	name = "monkeymeat"
 	desc = "A slab of meat from a monkey."

@@ -192,6 +192,16 @@
 	desc = "This burger tastes kind of offal."
 	icon_state = "heartburger"
 
+/obj/item/reagent_containers/food/snacks/burger/cluwneburger
+	name = "cluwneburger"
+	desc = "This burger looks, smells, and feels funny. Not funny ha-ha, but funny oh-no."
+	icon_state = "hburger"
+
+	heal(var/mob/living/M)
+		if (prob(50))
+			boutput(M, "<span style=\"color:red\">You really feel funny. Not funny ha-ha, but funny oh-no...</span>")
+			M.contract_disease(/datum/ailment/disease/cluwneing_around, null, null, 1) // path, name, strain, bypass resist
+
 /obj/item/reagent_containers/food/snacks/burger/brainburger
 	name = "brainburger"
 	desc = "A strange looking burger. It looks almost sentient."

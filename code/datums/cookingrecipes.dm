@@ -27,6 +27,12 @@
 	cookbonus = 13
 	output = /obj/item/reagent_containers/food/snacks/burger/monkeyburger
 
+/datum/cookingrecipe/cluwneburger
+	item1 = /obj/item/reagent_containers/food/snacks/ingredient/dough
+	item2 = /obj/item/reagent_containers/food/snacks/ingredient/meat/humanmeat/cluwnemeat
+	cookbonus = 13
+	output = /obj/item/reagent_containers/food/snacks/burger/cluwneburger
+
 /datum/cookingrecipe/fishburger
 	item1 = /obj/item/reagent_containers/food/snacks/ingredient/dough
 	item2 = /obj/item/reagent_containers/food/snacks/ingredient/meat/fish

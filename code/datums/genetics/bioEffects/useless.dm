@@ -71,6 +71,9 @@
 	var/holder_det2 = null
 	var/holder_skin = null
 
+	msgGain = "You feel like you're going to need to buy lots of sunscreen."
+	msgLose = "You feel safer on the beach."
+
 	OnAdd()
 		if (!istype(owner,/mob/living/carbon/human/))
 			return
@@ -124,6 +127,9 @@
 	color_to_use = "#000000"
 	skintone_to_use = -185
 
+	msgGain = "Your skin starts turning darker before your eyes."
+	msgLose = "Your dark pigmentation fades away."
+
 /datum/bioEffect/stinky
 	name = "Apocrine Enhancement"
 	desc = "Increases the amount of natural body substances produced from the subject's apocrine glands."
@@ -173,7 +179,7 @@
 	desc = {"Human worker clone batch #92 may contain inactive space bee DNA.
 	If you do not have the authorization level to know that SS13 is staffed with clones, please forget this entire message."}
 	id = "bee"
-	msgGain = "You feel buzzed"
+	msgGain = "You feel buzzed."
 	msgLose = "You lose your buzz."
 	probability = 99
 
