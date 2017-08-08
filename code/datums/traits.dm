@@ -544,6 +544,7 @@
 	id = "leftfeet"
 	points = 1
 	isPositive = 0
+
 /*
 /obj/trait/lizard
 	name = "Lizard (-1) \[Race\]"

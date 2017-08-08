@@ -31,6 +31,11 @@
 	humanmeat_amount = 1
 	creates = "/obj/item/reagent_containers/food/snacks/burger/humanburger"
 
+/datum/recipe/cluwneburger
+	flour_amount = 1
+	extra_item = /obj/item/reagent_containers/food/snacks/ingredient/meat/humanmeat/cluwnemeat
+	creates = "/obj/item/reagent_containers/food/snacks/burger/cluwneburger"
+
 /datum/recipe/brainburger
 	flour_amount = 1
 	extra_item = /obj/item/organ/brain
