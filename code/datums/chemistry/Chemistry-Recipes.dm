@@ -222,6 +222,15 @@ datum
 			mix_phrase = "The mixture solidifies, taking a crystalline appearance."
 			mix_sound = 'sound/effects/blobattack.ogg'
 
+		chickenpoop
+			name = "Chicken Poop"
+			id = "chickenpoop"
+			result = "chickenpoop"
+			required_reagents = list("chickensoup" = 1, "jenkem" = 1)
+			result_amount = 2
+			mix_phrase = "The chicken soup turns a sickening shade of brown and gives off a vicious odor."
+			mix_sound = 'sound/misc/drinkfizz.ogg'
+
 		enriched_msg
 			name = "Enriched MSG"
 			id = "enriched_msg"
@@ -411,6 +420,16 @@ datum
 			mix_sound = 'sound/misc/drinkfizz.ogg'
 			drinkrecipe = 1
 
+		lemonade_piss
+			name = "'Lemonade'"
+			id = "lemonade_piss"
+			result = "lemonade_piss"
+			required_reagents = list("urine" = 3, "sugar" = 1)
+			result_amount = 4
+			mix_phrase = "The sugar dissolves into the bright yellow liquid."
+			mix_sound = 'sound/misc/drinkfizz.ogg'
+			drinkrecipe = 1
+
 		halfandhalf
 			name = "Half and Half"
 			id = "halfandhalf"
@@ -512,6 +531,26 @@ datum
 			result_amount = 2
 			mix_phrase = "The blood feverishly tries to escape the burn of the vodka, but eventually succumbs."
 			mix_sound = 'sound/effects/fleshbr1.ogg'
+			drinkrecipe = 1
+
+		cocktail_snakebite
+			name = "Snakebite"
+			id = "snakebite"
+			result = "snakebite"
+			required_reagents = list("cider" = 1, "beer" = 1)
+			result_amount = 2
+			mix_phrase = "The beer and cider mix into an appetizing drink."
+			mix_sound = 'sound/misc/drinkfizz.ogg'
+			drinkrecipe = 1
+
+		cocktail_diesel
+			name = "Diesel"
+			id = "diesel"
+			result = "diesel"
+			required_reagents = list("snakebite" = 1, "cranberry_juice" = 1)
+			result_amount = 2
+			mix_phrase = "The addition of the juice makes the drink even more appetizing and somehow even stronger."
+			mix_sound = 'sound/misc/drinkfizz.ogg'
 			drinkrecipe = 1
 
 		cocktail_suicider
@@ -670,6 +709,15 @@ datum
 			required_reagents = list("vodka" = 1, "coffee" = 1, "milk" = 1)
 			result_amount = 3
 			mix_phrase = "The drink abides."
+			mix_sound = 'sound/misc/drinkfizz.ogg'
+
+		cocktail_m_russian
+			name = "Mail-Order Russian"
+			id = "m_russian"
+			result = "m_russian"
+			required_reagents = list("vodka" = 1, "mayo" = 1)
+			result_amount = 2
+			mix_phrase = "The drink turns white. Lumps of mayonnaise are visible throughout. I'm sure this tastes wonderful."
 			mix_sound = 'sound/misc/drinkfizz.ogg'
 
 		cocktail_w_russian/w_russian2

@@ -261,6 +261,26 @@ datum
 			description = "An alcoholic beverage derived from maize.  Also ghosts."
 			taste = "spooky"
 
+		fooddrink/alcoholic/snakebite
+			name = "Snakebite"
+			id = "snakebite"
+			fluid_r = 143
+			fluid_g = 74
+			fluid_b = 37
+			alch_strength = 3
+			description = "A slightly tart cocktail made from beer and cider that reminds you of autumn."
+			taste = "like falling leaves"
+
+		fooddrink/alcoholic/diesel
+			name = "Diesel"
+			id = "diesel"
+			fluid_r = 163
+			fluid_g = 64
+			fluid_b = 27
+			alch_strength = 4
+			description = "A tart, yet sweet cocktail."
+			taste = "like falling leaves and cranberries"
+
 		fooddrink/alcoholic/beepskybeer
 			name = "Beepskybräu Security Schwarzbier"
 			id = "beepskybeer"
@@ -749,6 +769,16 @@ datum
 			fluid_b = 15
 			alch_strength = 4
 			description = "A vodka-infused coffee cocktail. Supposedly created in honor of a US Ambassador that no one remembers."
+			reagent_state = LIQUID
+
+		fooddrink/alcoholic/m_russian
+			name = "Mail-Order Russian"
+			id = "m_russian"
+			fluid_r = 220
+			fluid_g = 220
+			fluid_b = 220
+			alch_strength = 3
+			description = "This is just vodka with little lumps in it. Ew?"
 			reagent_state = LIQUID
 
 		fooddrink/alcoholic/irishcoffee
@@ -1774,6 +1804,35 @@ datum
 				..(M)
 				return
 
+		fooddrink/chickenpoop
+			name = "chicken poop"
+			id = "chickenpoop"
+			description = "What happens when you mix chicken soup and jenkem? Now you know."
+			reagent_state = LIQUID
+			fluid_r = 210
+			fluid_g = 105
+			fluid_b = 30
+			transparency = 255
+			depletion_rate = 0.2
+			taste = "ABSOLUTELY DISGUSTING"
+
+			reaction_mob(var/mob/living/M, var/method=TOUCH, var/volume_passed)
+				src = null
+				if(!volume_passed)
+					return
+				if(!ishuman(M))
+					return
+				if(method == INGEST)
+					boutput(M, "<span style=\"color:red\">Why did you drink that? What the fuck is wrong with you?</span>")
+					M.stunned += 2
+					M.weakened += 2
+					M.contract_disease(/datum/ailment/disease/food_poisoning, null, null, 1) // path, name, strain, bypass resist
+					if (prob(25))
+
+						M.visible_message("<span style=\"color:red\">[M] horks all over \himself. Gross!</span>")
+						playsound(M.loc, "sound/effects/splat.ogg", 50, 1)
+						new /obj/decal/cleanable/vomit(M.loc)
+
 		fooddrink/salt
 			name = "salt"
 			id = "salt"
@@ -2149,7 +2208,7 @@ datum
 		fooddrink/pepperoni //Hukhukhuk presents. pepperoni and acetone
 			name = "pepperoni"
 			id = "pepperoni"
-			description = "An Italian-American variety of salami usually made from beef and pork"
+			description = "An Italian-American variety of salami usually made from beef and pork."
 			reagent_state = SOLID
 			fluid_r = 172
 			fluid_g = 126
@@ -2349,6 +2408,35 @@ datum
 				else if (method == INGEST)
 					if (prob(60) && (holder && holder.get_reagent_amount("sugar") < (volume/3)))
 						M.visible_message("<b>[M]'s</b> mouth puckers!","<span style=\"color:red\">Yow! Sour!</span>")
+
+		fooddrink/lemonade_piss
+			name = "'lemonade'"
+			id = "lemonade_piss"
+			fluid_r = 237
+			fluid_g = 218
+			fluid_b = 44
+			transparency = 150
+			description = "It looks right but it smells awful."
+			reagent_state = LIQUID
+			thirst_value = 2
+			taste = "like piss"
+
+			reaction_mob(var/mob/M, var/method=TOUCH, var/volume)
+				if(method == TOUCH)
+					if(ishuman(M))
+						var/mob/living/carbon/human/H = M
+						if(H.wear_mask) return
+						if(H.head) return
+				else if (method == INGEST)
+					if (prob(60) && (holder && holder.get_reagent_amount("sugar") < (volume/3)))
+						boutput(M, "<span style=\"color:red\">That doesn't taste right at all!</span>")
+
+			on_mob_life(var/mob/M)
+				if(!M) M = holder.my_atom
+				if (prob(5))
+					boutput(M, "<span style=\"color:red\">[pick("You feel ill.","Your stomach churns.","You feel queasy.","You feel sick.")]</span>")
+					M.emote(pick("groan","moan"))
+				..(M)
 
 		fooddrink/halfandhalf
 			name = "half and half"
