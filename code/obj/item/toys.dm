@@ -88,6 +88,18 @@
 		qdel(src)
 		return 1
 
+	attackby(obj/item/W as obj, mob/user as mob)
+		if(istype(W, /obj/item/toy/figure))
+			if(user:a_intent == INTENT_HELP)
+				user.visible_message("<span style=\"color:red\">[user] makes the [W.name] and the [src.name] kiss and kiss and kiss!</span>")
+			else if(user:a_intent == INTENT_DISARM)
+				user.visible_message("<span style=\"color:red\">[user] makes the [W.name] knock over and fart on the [src.name]!</span>")
+			else if(user:a_intent == INTENT_GRAB)
+				user.visible_message("<span style=\"color:red\">[user] has [W.name] put the [src.name] in a headlock!</span>")
+			else if(user:a_intent == INTENT_HARM)
+				user.visible_message("<span style=\"color:red\">[user] bangs the [W.name] into the [src.name] over and over!</span>")
+		return 0
+
 	UpdateName()
 		if (istype(src.info))
 			src.name = "[name_prefix(null, 1)][src.info.name] figure[name_suffix(null, 1)]"

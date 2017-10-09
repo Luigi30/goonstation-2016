@@ -20,6 +20,15 @@
 	if(user)
 		src.icon_state = "bball"
 
+/obj/item/basketball/suicide(var/mob/user as mob)
+	user.visible_message("<span style=\"color:red\"><b>[user] fouls out, permanently.</b></span>")
+	user.TakeDamage("head", 175, 0)
+	user.updatehealth()
+	spawn(100)
+		if (user)
+			user.suiciding = 0
+	return 1
+
 /obj/item/basketball/throw_impact(atom/hit_atom)
 	..(hit_atom)
 	src.icon_state = "bball"
