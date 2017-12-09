@@ -157,6 +157,21 @@
 		..()
 		reagents.add_reagent("blood", 50)
 
+
+/obj/item/reagent_containers/food/snacks/cake/fruit
+	name = "fruitcake"
+	desc = "The most disgusting dessert ever devised. Legend says there's only one of these in the galaxy, passed from location to location by vengeful deities."
+	var/hname = ""
+	var/job = null
+	icon_state = "cake_downs"
+	amount = 12
+	heal_amt = 3
+	initial_volume = 50
+
+	New()
+		..()
+		reagents.add_reagent("yuck", 100)
+
 /obj/item/reagent_containers/food/snacks/cake/bacon
 	name = "bacon cake"
 	desc = "This...this is just terrible."
