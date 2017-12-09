@@ -991,7 +991,6 @@
 /datum/cookingrecipe/cake_fruit
 	item1 = /obj/item/reagent_containers/food/snacks/fry_holder
 	item2 = /obj/item/reagent_containers/food/snacks/yuck
-	amt2 = 3
 	cookbonus = 14
 	output = null
 
@@ -1000,9 +999,7 @@
 			return null
 
 		var fruitcake = new /obj/item/reagent_containers/food/snacks/cake/fruit
-
-//		var/edge = get_edge_target_turf(fruitcake, pick(SOUTH))
-//		fruitcake.throw_at(edge, 25, 4)
+		playsound(ourCooker.loc, "sound/effects/splat.ogg", 50, 1)
 
 		return fruitcake
 

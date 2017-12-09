@@ -172,6 +172,12 @@
 		..()
 		reagents.add_reagent("yuck", 100)
 
+	attack(mob/M as mob, mob/user as mob, def_zone)
+		boutput(user, "<span style=\"color:red\">It's so hard it breaks one of your teeth AND it tastes disgusting! Why would you ever eat this?</span>")
+		random_brute_damage(M, 3)
+		M.emote("scream")
+		return
+
 /obj/item/reagent_containers/food/snacks/cake/bacon
 	name = "bacon cake"
 	desc = "This...this is just terrible."
